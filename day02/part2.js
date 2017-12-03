@@ -8,9 +8,19 @@ const rows = lines.map(
 );
 
 function rowNum(row) {
-  const min = Math.min(...row);
-  const max = Math.max(...row);
-  return max - min;
+  for (let i = 0; i < row.length; i++) {
+    for (let j = i+1; j < row.length; j++) {
+      const numi = row[i];
+      const numj = row[j];
+      if (numi % numj === 0) {
+        return numi / numj;
+      }
+      if (numj % numi === 0) {
+        return numj / numi;
+      }
+    }
+  }
+  return 0;
 }
 
 let sum = 0;
